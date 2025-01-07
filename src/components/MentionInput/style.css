@@ -1,0 +1,66 @@
+.mentions {
+  margin: 0;
+  width: 100%;
+  height:100%;
+}
+
+.mentions--singleLine .mentions__control {
+  display: inline-block;
+  width: 130px;
+}
+.mentions--singleLine .mentions__highlighter {
+  padding: 1px;
+}
+.mentions--singleLine .mentions__input {
+  padding: 1px;
+}
+
+.mentions--multiLine .mentions__highlighter {
+  padding: 9px;
+  min-height: 63px;
+  background: #f3f7ff;
+  border-radius: 8px;
+}
+.mentions--multiLine .mentions__input {
+  padding: 9px;
+  outline: 0;
+}
+
+.mentions__suggestions__list {
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  font-size: 10pt;
+}
+
+.mentions__suggestions__item {
+  padding: 5px 15px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.mentions__suggestions__item--focused {
+  background-color: #b7cbff;
+}
+
+.mentions__mention {
+  position: relative;
+  z-index: 1;
+  text-decoration: none;
+  pointer-events: none;
+}
+
+textarea {
+  flex: 1;
+  border: 0px;
+  width: 100%;
+  border-radius: 8px;
+  box-sizing: border-box;
+  border-radius: 6px;
+  font-size: 18px;
+  line-height: 21px;
+  padding: 14px;
+  text-decoration: none;
+  text-shadow: none;
+  resize: none;
+  background: #f3f7ff;
+  border: 0px;
+  box-sizing: border-box;
+}
