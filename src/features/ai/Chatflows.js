@@ -1,4 +1,8 @@
-import React from 'react';
+import React from "react";
+import { generateURL } from "../../commonFunctions";
+import ROUTES from "../../constants";
+
+const { chatflow } = ROUTES;
 
 export default function Chatflows() {
   return (
@@ -6,18 +10,16 @@ export default function Chatflows() {
       <div className="w-full h-full pl-[100px]">
         <div className="w-full h-full relative">
           <iframe
-            src="http://34.121.176.86/chatflows"
-            // src="http://localhost:8080/chatflows"
+            src={generateURL(chatflow)}
             style={{
-              width: 'calc(100% - 100px)', // Dynamically adjust width based on the sidebar
+              width: 'calc(100% - 100px)',
               height: '100vh',
               border: 'none',
               position: 'fixed',
               top: 0,
-              left: '100px', // Account for sidebar width
+              left: '100px',
               backgroundColor: 'white',
             }}
-            title="AgentFlows"
           />
         </div>
       </div>

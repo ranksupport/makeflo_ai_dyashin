@@ -4,6 +4,8 @@ import {
   userExistPost,
   userForgotPasswordPost,
   userLoginPost,
+  userLogoutPostAi,
+  userRegisterPostAi,
   userResetPasswordPost,
   userSignupPost,
   userUpdatePost,
@@ -19,6 +21,31 @@ export const login = createAsyncThunk(
       return data;
     } catch (err) {
       return rejectWithValue(err.response.data);
+    }
+  }
+);
+
+export const registerUserAi = createAsyncThunk(
+  "auth/register",
+  async (_, { rejectWithValue }) => {
+    try {
+      const response = await userRegisterPostAi();
+      return response;
+    } catch (err) {
+      return rejectWithValue(err.response); 
+    }
+  }
+);
+
+
+export const logoutUserAi = createAsyncThunk(
+  "auth/logout",
+  async (_, { rejectWithValue }) => {
+    try {
+      const response = await userLogoutPostAi();
+      return response;
+    } catch (err) {
+      return rejectWithValue(err.response); 
     }
   }
 );

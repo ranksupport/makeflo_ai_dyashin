@@ -1,6 +1,4 @@
 export const routes = {
-
-
   // GET_WIDGETS_ACTIVE: {
   //   URL: "/api/v1/ai",
   //   METHOD: "GET",
@@ -39,6 +37,10 @@ export const routes = {
     URL: "/api/v1/auth/login",
     METHOD: "POST",
   },
+  USER_REGISTER: {
+    URL: "/api/v1/auth/register",
+    METHOD: "POST",
+  },
   USER_SIGNUP: {
     URL: "/api/v1/signup",
     METHOD: "POST",
@@ -63,7 +65,11 @@ export const routes = {
     URL: "api/v1/users/update_user_password",
     METHOD: "POST",
   },
-
+  //   ----------------------logout-----------------------------
+  USER_LOGOUT: {
+    URL: "/api/v1/auth/logout",
+    METHOD: "POST",
+  },
   //   -----------------------dashboard--------------------------
   GET_WIDGETS_ACTIVE: {
     URL: "/api/v1/widgets/active",
@@ -157,7 +163,7 @@ export const routes = {
     METHOD: "GET",
   },
   GET_ALL_APPS: {
-     URL: "api/v1/apps/get_allapps",
+    URL: "api/v1/apps/get_allapps",
     //URL: "api/v1/apps",
     METHOD: "GET",
   },
@@ -275,12 +281,12 @@ export const routes = {
     URL: `api/v1/konnects/`,
     METHOD: "POST",
   },
-  ON_GET_Flow:{
+  ON_GET_Flow: {
     URL: `api/v1/konnects/`,
     METHOD: "GET",
   },
-    MOVE_FLOW_TO_FOLDER: {
-      URL: "api/v1/folders/",
-      METHOD: "POST",
-  }
+  MOVE_FLOW_TO_FOLDER: {
+    URL: "api/v1/folders/",
+    METHOD: "POST",
+  },
 };

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {  Outlet, useParams } from "react-router-dom";
+import { Outlet, useParams } from "react-router-dom";
 import {
   Avatar,
   Flex,
@@ -12,8 +12,8 @@ import {
   Tooltip,
 } from "@chakra-ui/react";
 import { IoSettings } from "react-icons/io5";
-//import { BsRobot } from "react-icons/bs"; 
-import { AiOutlineUser, AiOutlineMessage, AiOutlineTool } from 'react-icons/ai';
+//import { BsRobot } from "react-icons/bs";
+import { AiOutlineUser, AiOutlineMessage, AiOutlineTool } from "react-icons/ai";
 import AuthTokenService from "../../utils/AuthTokenService";
 import { useNavigate } from "react-router-dom";
 import { GrAppsRounded } from "react-icons/gr";
@@ -28,6 +28,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setActiveNav } from "../../store/slices/shellSlice";
 import { FaUncharted } from "react-icons/fa";
 import { getProfile } from "../../store/thunk/accountThunk";
+import { logoutUserAi } from "../../store/thunk/authThunk";
 const navItem = [
   {
     icon: "",
@@ -434,7 +435,6 @@ export const Ctopbar = ({ heading }) => {
   );
 };
 
-
 const Sidebar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -451,6 +451,15 @@ const Sidebar = () => {
       }
     });
   }, []);
+
+  const handleLogout = () => {
+    dispatch(logoutUserAi()).then((res) => {
+      if (!res.error || res.error) {
+        AuthTokenService.clear();
+        navigate("/logout");
+      }
+    });
+  };
   return (
     <Flex
       width="100px"
@@ -545,8 +554,7 @@ const Sidebar = () => {
       >
         <Flex
           onClick={() => {
-            AuthTokenService.clear();
-            navigate("/logout");
+            handleLogout();
           }}
           sx={{
             height: "80px",

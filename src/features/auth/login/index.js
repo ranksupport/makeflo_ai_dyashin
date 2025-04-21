@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import {  useFormik } from "formik";
+import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
-import { login } from "../../../store/thunk/authThunk";
+import { login, registerUserAi } from "../../../store/thunk/authThunk";
 import AuthTokenService from "../../../utils/AuthTokenService";
 import { useNavigate } from "react-router-dom";
 import { MdEmail } from "react-icons/md";
@@ -18,7 +18,7 @@ import {
   InputRightElement,
   useToast,
 } from "@chakra-ui/react";
-import {  ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
+import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import { RiLockPasswordFill } from "react-icons/ri";
 import ReCAPTCHA from "react-google-recaptcha";
 // Creating schema
@@ -31,7 +31,7 @@ const schema = Yup.object().shape({
     .min(8, "Password must be at least 8 characters"),
 });
 
-export const LoginForm = ({  }) => {
+export const LoginForm = ({}) => {
   const loading = useSelector((state) => state.auth.loading);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -78,6 +78,13 @@ export const LoginForm = ({  }) => {
           lang: res.payload.preferred_language,
           email: payload.email,
         });
+
+        dispatch(registerUserAi()).then((res) => {
+          if (!res.error) {
+            return;
+          }
+        });
+
         navigate("/dashboard");
       } else {
         toast({

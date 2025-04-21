@@ -1,4 +1,5 @@
 import { nanoid } from "@reduxjs/toolkit";
+import AuthTokenService from "../utils/AuthTokenService";
 
 export const FlattenJSON = (json) => {
   let newData = [];
@@ -209,4 +210,10 @@ export const juiceMaker = (props) => {
     }
   });
   return payload;
+};
+
+
+export const generateURL = (path) => {
+  const token = AuthTokenService.get();
+  return `${process.env.AI_BASE_URL}/${path}?authToken=${token}`;
 };

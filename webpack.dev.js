@@ -35,10 +35,12 @@ module.exports = merge(common, {
     new webpack.DefinePlugin({
       VERSION: JSON.stringify("5fa3b9"),
       "process.env.API_BASE_URL": JSON.stringify(
-        "https://api.connect.yt/"
+        // "https://api.connect.yt/"
+        "https://api.konnectzit.com/"
         // "https://suitedashapi.konnectzit.com/"
       ),
-      "process.env.APP_BASE_URL": JSON.stringify("http://localhost:8080/"),
+      "process.env.APP_BASE_URL": JSON.stringify("http://localhost:8081/"),
+      "process.env.AI_BASE_URL": JSON.stringify("http://localhost:3000"),
       "process.env.API_KEY": JSON.stringify(
         "360c3597-78d5-4a80-9998-2042b859578f"
       ),

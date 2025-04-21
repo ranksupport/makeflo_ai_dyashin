@@ -1,4 +1,4 @@
-import { apiClient, apiClient1 } from "./axios";
+import { apiClient, apiClient1, apiClientAi } from "./axios";
 import { routes } from "./routes";
 import AuthTokenService from "../utils/AuthTokenService";
 
@@ -14,6 +14,13 @@ export const userLoginPost = (body) => {
       Accept: "application/json",
       "Content-Type": "application/json; charset=utf-8",
     },
+  });
+};
+
+export const userRegisterPostAi = () => {
+  return apiClientAi({
+    method: routes.USER_REGISTER.METHOD,
+    url: routes.USER_REGISTER.URL,
   });
 };
 
@@ -98,6 +105,14 @@ export const userResetPasswordPost = (body) => {
       Accept: "application/json",
       "Content-Type": "application/json; charset=utf-8",
     },
+  });
+};
+
+//   ----------------------logout-----------------------------
+export const userLogoutPostAi = () => {
+  return apiClientAi({
+    method: routes.USER_LOGOUT.METHOD,
+    url: routes.USER_LOGOUT.URL,
   });
 };
 
@@ -207,7 +222,6 @@ export const createFolderPost = (folderName) => {
 //     },
 //   });
 // };
-
 
 export const moveKonnectsToFolderPost = ({ selectedKonnects, folderId }) => {
   let tokenobj1 = AuthTokenService.get();
@@ -673,13 +687,12 @@ export const getAppEventConfigDetailsFetchsimple = (nodeData) => {
 
 export const saveflow = (props) => {
   let { flowState } = props;
-  console.log("flowState", flowState)
   const newFlowState = {
     ...flowState,
     konnect_id: flowState.apps[0]?.data?.konnect_id
       ? flowState.apps[0]?.data?.konnect_id
       : null,
-      konnect_name:flowState.flowName
+    konnect_name: flowState.flowName,
   };
 
   const payload = {
@@ -693,10 +706,9 @@ export const saveflow = (props) => {
   //   (node) => node.data.app_status.flowReady === true
   // );
 
-  let url =
-    props.publish
-      ? routes.PUBLISH_KONNECT.URL
-      : routes.SAVE_KONNECT.URL;
+  let url = props.publish
+    ? routes.PUBLISH_KONNECT.URL
+    : routes.SAVE_KONNECT.URL;
 
   return apiClient({
     method: routes.SAVE_KONNECT.METHOD,
@@ -766,8 +778,7 @@ export const getAgencyUserList = () => {
     },
   });
 };
-export const deletetheFlow= (props) => {
-
+export const deletetheFlow = (props) => {
   let url = routes.UPDATE_FLOW_LIST.URL + `${props.props.id}/update_status`;
   return apiClient({
     url: url,
@@ -790,7 +801,6 @@ export const getTheFlow = (props) => {
   });
 };
 
-
 // New function to move a flow to a new folder
 // export const moveFlowToFolder = async (flowId, newFolderId) => {
 //   const payload = {
@@ -810,7 +820,6 @@ export const getTheFlow = (props) => {
 //   });
 // };
 
-
 // export const moveFlowToFolder = (props) => {
 //   let url = routes.MOVE_FLOW_TO_FOLDER.URL + props.folderId + "/assign";
 
@@ -825,7 +834,6 @@ export const getTheFlow = (props) => {
 //     },
 //   });
 // };
-
 
 ////// For Custom Input Configs
 
